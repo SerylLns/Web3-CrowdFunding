@@ -9,8 +9,10 @@ import search from "./search.svg";
 import menu from "./menu.svg";
 import thirdweb from "./thirdweb.png";
 import dashboard from "./dashboard.svg";
+import rocket from "./rocket.png";
 
 export {
+  rocket,
   dashboard,
   createCampaign,
   logo,

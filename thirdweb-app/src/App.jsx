@@ -2,6 +2,7 @@ import { ConnectWallet } from "@thirdweb-dev/react";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import { Route, Routes } from "react-router-dom";
+import CreateCampaign from "./pages/CreateCampaign";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Navbar />
         <Routes>
           <Route path="/" element={<h1>Hello</h1>} />
+          <Route path="/create-campaign" element={<CreateCampaign />} />
         </Routes>
       </div>
     </div>
