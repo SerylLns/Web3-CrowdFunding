@@ -3,18 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { logo, menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
+import Button from "./Button";
+import { useStateContext } from "../context";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
-
+  const { address, connect } = useStateContext();
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
       <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px]">
         <input
           type="text"
-          placeholder="Search for campaigns"
+          placeholder="Rechercher un projet "
           className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
         />
 
@@ -27,16 +29,20 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="sm:flex hidden flex-row justify-end gap-4">
-        {/* <CustomButton 
+      <div className="sm:flex hidden flex-row justify-end gap-8">
+        <Button
           btnType="button"
-          title={address ? 'Create a campaign' : 'Connect'}
-          styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
+          title={address ? "Lancer un Projet" : "Connectez votre wallet"}
+          styles={
+            address
+              ? "bg-[#1dc071] px-6 bg-gradient-to-r from-indigo-500/25 via-purple-500/50 to-pink-500/75 "
+              : "bg-gradient-to-r to-indigo-500/25 from-purple-500/50 via-pink-500 px-6 "
+          }
           handleClick={() => {
-            if(address) navigate('create-campaign')
-            else connect()
+            if (address) navigate("create-campaign");
+            else connect();
           }}
-        /> */}
+        />
 
         <Link to="/profile">
           <div className="w-[52px] h-[52px] rounded-full bg-[#2c2f32] flex justify-center items-center cursor-pointer">
@@ -104,15 +110,15 @@ const Navbar = () => {
           </ul>
 
           <div className="flex mx-4">
-            {/* <CustomButton 
+            <Button
               btnType="button"
-              title={address ? 'Create a campaign' : 'Connect'}
-              styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
+              title={address ? "Create a campaign" : "Connect"}
+              styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
               handleClick={() => {
-                if(address) navigate('create-campaign')
+                if (address) navigate("create-campaign");
                 else connect();
               }}
-            /> */}
+            />
           </div>
         </div>
       </div>

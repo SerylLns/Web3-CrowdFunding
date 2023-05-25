@@ -18,8 +18,9 @@ root.render(
   <React.StrictMode>
     <ThirdwebProvider activeChain={Sepolia}>
       <BrowserRouter>
-        <StateContextProvider></StateContextProvider>
-        <App />
+        <StateContextProvider>
+          <App />
+        </StateContextProvider>
       </BrowserRouter>
     </ThirdwebProvider>
   </React.StrictMode>

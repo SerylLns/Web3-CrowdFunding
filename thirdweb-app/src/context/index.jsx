@@ -22,14 +22,18 @@ export const StateContextProvider = ({ children }) => {
 
   const publishCampaign = async (form) => {
     try {
-      const data = await createCampaign([
-        address,
-        form.title,
-        form.description,
-        form.target,
-        new Date(form.deadline).getTime(),
-        form.image,
-      ]);
+      console.log(address);
+      console.log(form);
+      const data = await createCampaign({
+        args: [
+          address,
+          form.title,
+          form.description,
+          form.target,
+          new Date(form.deadline).getTime(),
+          form.image,
+        ],
+      });
       console.log("Publish campaign success:", data);
     } catch (error) {
       console.log("Publish campaign ERROR !! ", error);
@@ -38,7 +42,7 @@ export const StateContextProvider = ({ children }) => {
 
   return (
     <StateContext.Provider
-      value={{ address, contract, createCampaign: publishCampaign }}
+      value={{ address, contract, createCampaign: publishCampaign, connect }}
     >
       {children}
     </StateContext.Provider>

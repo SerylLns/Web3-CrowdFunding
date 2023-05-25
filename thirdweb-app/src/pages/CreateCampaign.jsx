@@ -4,6 +4,8 @@ import FormField from "../components/FormField";
 import { rocket } from "../assets";
 import Button from "../components/Button";
 import { useStateContext } from "../context";
+import { ethers } from "ethers";
+import { checkIfImage } from "../utils";
 
 const CreateCampaign = () => {
   const navigate = useNavigate();
@@ -21,11 +23,32 @@ const CreateCampaign = () => {
   const handleFormChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value });
   };
+  const validForm = (form) => {
+    Object.keys(form).forEach((i) => {
+      if (!form[i].length) return false;
+    });
+    checkIfImage(form.image, (exists) => {
+      if (!exists) {
+        alert("Image url is not valid !");
+        setForm({ ...form, image: "" });
+        return false;
+      }
+    });
+    return true;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    setIsLoading(true);
+    if (!validForm(form)) return;
+    createCampaign({
+      ...form,
+      target: ethers.utils.parseUnits(form.target, 18),
+    });
+    setIsLoading(false);
+    // navigate("/");
   };
+
   return (
     <div className="bg-blackLight rounded-[10px] flex justify-center items-center flex-col sm:p-10 p-4">
       {isLoading && "loading...."}
