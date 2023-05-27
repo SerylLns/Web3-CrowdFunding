@@ -5,6 +5,7 @@ import { calculateBarPercentage, daysLeft } from "../utils";
 import CountBox from "../components/CountBox";
 import { thirdweb } from "../assets";
 import Button from "../components/Button";
+import Loader from "../components/Loader";
 
 const CampaignDetail = () => {
   const { state } = useLocation();
@@ -38,7 +39,7 @@ const CampaignDetail = () => {
 
   return (
     <div>
-      {isLoading && "Loading..."}
+      {isLoading && <Loader />}
       <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
         <div className="flex-1 flex-col">
           <img

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import CampaignCard from "./CampaignCard";
+import Loader from "./Loader";
 
 const CampaignList = ({ title, loading, campaigns }) => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const CampaignList = ({ title, loading, campaigns }) => {
         {title} ({campaigns.length})
       </h1>
       <div className="flex flex-wrap mt-[20px] gap-[26px]">
-        {loading && <span>loading...</span>}
+        {loading && <Loader />}
 
         {!loading && campaigns.length === 0 && (
           <p className="font-semibold text-[16px] leading-[30px] text-grayLight">
@@ -23,7 +24,7 @@ const CampaignList = ({ title, loading, campaigns }) => {
         )}
 
         {!loading &&
-          campaigns.length &&
+          campaigns.length > 0 &&
           campaigns.map((campaign) => (
             <CampaignCard
               key={campaign.pId}

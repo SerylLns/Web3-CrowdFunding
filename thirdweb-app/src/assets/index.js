@@ -10,6 +10,7 @@ import menu from "./menu.svg";
 import thirdweb from "./thirdweb.png";
 import dashboard from "./dashboard.svg";
 import rocket from "./rocket.png";
+import loader from "./loader.svg";
 
 export {
   rocket,
@@ -24,4 +25,5 @@ export {
   search,
   menu,
   thirdweb,
+  loader,
 };

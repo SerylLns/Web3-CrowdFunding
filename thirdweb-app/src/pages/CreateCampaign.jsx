@@ -46,7 +46,7 @@ const CreateCampaign = () => {
       target: ethers.utils.parseUnits(form.target, 18),
     });
     setIsLoading(false);
-    // navigate("/");
+    navigate("/");
   };
 
   return (

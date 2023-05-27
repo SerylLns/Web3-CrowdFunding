@@ -112,7 +112,7 @@ const Navbar = () => {
           <div className="flex mx-4">
             <Button
               btnType="button"
-              title={address ? "Create a campaign" : "Connect"}
+              title={address ? "Créer un Projet" : "Connecter un Wallet"}
               styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
               handleClick={() => {
                 if (address) navigate("create-campaign");
