@@ -1,6 +1,6 @@
 # Crowdfunding
 
-Ce projet est un site de crowdfunding basé sur la technologie de la blockchain.   
+Ce projet est un site de crowdfunding basé sur la technologie de la blockchain Ethereum.   
 Il utilise Web3.js, ethers.js et React côté front-end, ainsi que Solidity pour les smart contracts.  
 
 ### [Lien vers le site](https://thriving-souffle-492c3b.netlify.app/)
