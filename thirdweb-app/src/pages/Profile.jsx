@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
+import CampaignCard from "../components/CampaignCard";
 import { useStateContext } from "../context";
 import CampaignList from "../components/CampaignList";
 
-const Home = () => {
+const Profile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([]);
 
-  const { address, contract, getCampaigns } = useStateContext();
+  const { address, contract, getUserCampaigns } = useStateContext();
 
   const fetchCampaigns = async () => {
     setIsLoading(true);
-    const data = await getCampaigns();
+    const data = await getUserCampaigns();
     setCampaigns(data);
     setIsLoading(false);
   };
@@ -20,8 +21,12 @@ const Home = () => {
   }, [address, contract]);
 
   return (
-    <CampaignList title="Projets" loading={isLoading} campaigns={campaigns} />
+    <CampaignList
+      title="Mes Projets"
+      loading={isLoading}
+      campaigns={campaigns}
+    />
   );
 };
 
-export default Home;
+export default Profile;
